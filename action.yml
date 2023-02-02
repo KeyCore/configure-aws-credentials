@@ -58,6 +58,10 @@ inputs:
   http-proxy:
     description: 'Proxy to use for the AWS SDK agent'
     required: false
+  post-clean-up:
+    description: 'Run the post function or not'
+    required: false
+    default: true
 outputs:
   aws-account-id:
     description: 'The AWS account ID for the provided credentials'
@@ -65,3 +69,4 @@ runs:
   using: 'node12'
   main: 'dist/index.js'
   post: 'dist/cleanup/index.js'
+  post-if: inputs.post-clean-up == true
